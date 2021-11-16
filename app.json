@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "sudoku-solver-m",
-    "slug": "sudoku-solver-m",
-    "version": "1.0.0",
+    "name": "Sudoku Solver",
+    "slug": "sudoku-solver",
+    "version": "0.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Native app for solving Sudoku problems.",
+    "githubUrl": "https://github.com/GarikHarutyunyan/react-native-sudoku-solver"
   }
 }
