@@ -121,11 +121,11 @@ const styles = StyleSheet.create({
     alignSelf: "stretch",
     backgroundColor: BACKGROUND_COLOR,
     alignItems: "center",
-    marginVertical: "5%",
     flexWrap: "wrap",
   },
   flexRow1: {
     flexDirection: "row",
+    marginTop: 20,
   },
   flexRow2: {
     flexDirection: "row",
