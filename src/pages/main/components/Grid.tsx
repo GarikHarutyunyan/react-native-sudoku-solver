@@ -1,8 +1,6 @@
-// import clsx from "clsx";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Cell } from "./Cell";
-// import "./grid.scss";
 
 type GridProps = {
   matrix: any[][];
@@ -59,15 +57,10 @@ const styles = StyleSheet.create({
   grid: {
     flexGrow: 1,
     flexShrink: 1,
-    // borderWidth: 1,
-    // alignSelf: "stretch",
-    // borderColor: "black",
     marginVertical: 5,
   },
   grid__row: {
-    // flexGrow: 1,
     flexShrink: 1,
-    // alignSelf: "stretch",
     flexDirection: "row",
   },
   cell_boldTopBorder: {

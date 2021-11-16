@@ -1,7 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Grid } from "./components/Grid";
-// import "./main.scss";
 import { Solver } from "./Solver";
 
 class Main extends React.Component {
@@ -115,18 +114,18 @@ class Main extends React.Component {
     );
   }
 }
-
+const BACKGROUND_COLOR = "#3b57b3";
 const styles = StyleSheet.create({
   main: {
     flex: 1,
     alignSelf: "stretch",
-    backgroundColor: "aliceblue",
+    backgroundColor: BACKGROUND_COLOR,
     alignItems: "center",
-    marginVertical: "5%",
     flexWrap: "wrap",
   },
   flexRow1: {
     flexDirection: "row",
+    marginTop: 20,
   },
   flexRow2: {
     flexDirection: "row",
