@@ -1,7 +1,5 @@
-// import clsx from "clsx";
 import React from "react";
 import { StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native";
-// import "./cell.scss";
 
 type CellProps = {
   value: number;
@@ -36,11 +34,7 @@ class Cell extends React.Component<CellProps> {
 
     return (
       <TouchableWithoutFeedback onPress={onClick && onClick()}>
-        <View
-          // style={{ ...style,  }}
-          // className={clsx(className, "cell", { cell_active: isActive })}
-          style={cellStyle}
-        >
+        <View style={cellStyle}>
           <Text style={textStyle}>{value || ""}</Text>
         </View>
       </TouchableWithoutFeedback>
@@ -48,6 +42,7 @@ class Cell extends React.Component<CellProps> {
   }
 }
 
+const ACTIVE_CELL_COLOR = "#4c70c1";
 const styles = StyleSheet.create({
   cell: {
     aspectRatio: 1,
@@ -60,7 +55,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   cell_active: {
-    backgroundColor: "aquamarine",
+    backgroundColor: ACTIVE_CELL_COLOR,
   },
   cell_forText: {
     aspectRatio: 2.5,
