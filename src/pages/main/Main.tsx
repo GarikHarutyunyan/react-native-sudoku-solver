@@ -3,13 +3,16 @@ import { StyleSheet, View } from "react-native";
 import { Grid } from "./components/Grid";
 import { Solver } from "./Solver";
 
+const BACKGROUND_COLOR = "#3b57b3";
+const TEXT_PRIMARY_COLOR = "#2e313a";
+const TEXT_SECONDARY_COLOR = "#373d4c";
 class Main extends React.Component {
   numMatrix = Array(9).fill(Array(9).fill(0));
 
   state = {
     objMatrix: this.numMatrix.map((row) => {
       return row.map((val: any) => {
-        return { value: val, color: "black" };
+        return { value: val, color: TEXT_PRIMARY_COLOR };
       });
     }),
     activeCell: { x: 0, y: 0 },
@@ -51,7 +54,7 @@ class Main extends React.Component {
     let newMatrix = objMatrix;
 
     newMatrix[y][x].value = num;
-    newMatrix[y][x].color = "black";
+    newMatrix[y][x].color = TEXT_PRIMARY_COLOR;
     this.setState({
       objMatrix: newMatrix,
     });
@@ -69,19 +72,19 @@ class Main extends React.Component {
     const { objMatrix, activeCell } = this.state;
     const numBoard = [
       [
-        { value: 1, color: "black" },
-        { value: 2, color: "black" },
-        { value: 3, color: "black" },
+        { value: 1, color: TEXT_PRIMARY_COLOR },
+        { value: 2, color: TEXT_PRIMARY_COLOR },
+        { value: 3, color: TEXT_PRIMARY_COLOR },
       ],
       [
-        { value: 4, color: "black" },
-        { value: 5, color: "black" },
-        { value: 6, color: "black" },
+        { value: 4, color: TEXT_PRIMARY_COLOR },
+        { value: 5, color: TEXT_PRIMARY_COLOR },
+        { value: 6, color: TEXT_PRIMARY_COLOR },
       ],
       [
-        { value: 7, color: "black" },
-        { value: 8, color: "black" },
-        { value: 9, color: "black" },
+        { value: 7, color: TEXT_PRIMARY_COLOR },
+        { value: 8, color: TEXT_PRIMARY_COLOR },
+        { value: 9, color: TEXT_PRIMARY_COLOR },
       ],
     ];
 
@@ -89,12 +92,24 @@ class Main extends React.Component {
       [
         {
           value: "Clean Cell",
-          color: "black",
+          color: TEXT_PRIMARY_COLOR,
           onClick: this.cleanCell,
         },
       ],
-      [{ value: "Clear All", color: "black", onClick: this.clearAllCells }],
-      [{ value: "Solve", color: "black", onClick: this.solveProblem }],
+      [
+        {
+          value: "Clear All",
+          color: TEXT_PRIMARY_COLOR,
+          onClick: this.clearAllCells,
+        },
+      ],
+      [
+        {
+          value: "Solve",
+          color: TEXT_PRIMARY_COLOR,
+          onClick: this.solveProblem,
+        },
+      ],
     ];
 
     return (
@@ -114,7 +129,7 @@ class Main extends React.Component {
     );
   }
 }
-const BACKGROUND_COLOR = "#3b57b3";
+
 const styles = StyleSheet.create({
   main: {
     flex: 1,
