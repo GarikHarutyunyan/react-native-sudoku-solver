@@ -23,7 +23,7 @@ class Cell extends React.Component<CellProps> {
   }
 
   render() {
-    const { value, isActive, onClick, color, style, className } = this.props;
+    const { value, isActive, onClick, color, style } = this.props;
     const cellStyle = [
       styles.cell,
       isActive && styles.cell_active,

@@ -7,7 +7,7 @@ type GridProps = {
   activeCell?: any;
   onCellClick?: any;
   cellsStyle?: object;
-  cellsClassName?: string;
+  style?: StyleSheet;
 };
 
 class Grid extends React.Component<GridProps> {
@@ -22,10 +22,10 @@ class Grid extends React.Component<GridProps> {
   };
 
   render() {
-    const { matrix, activeCell, cellsStyle, cellsClassName } = this.props;
+    const { matrix, activeCell, cellsStyle, style } = this.props;
 
     return (
-      <View style={styles.grid}>
+      <View style={{ ...styles.grid, ...style }}>
         {matrix.map((row, y) => {
           return (
             <View key={y + ""} style={styles.grid__row}>

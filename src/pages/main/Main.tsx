@@ -119,6 +119,7 @@ class Main extends React.Component {
             matrix={objMatrix}
             activeCell={activeCell}
             onCellClick={this.onActiveCellChange}
+            style={styles.grid}
           />
         </View>
         <View style={styles.flexRow2}>
@@ -144,6 +145,9 @@ const styles = StyleSheet.create({
   },
   flexRow2: {
     flexDirection: "row",
+  },
+  grid: {
+    marginHorizontal: 25,
   },
 });
 
