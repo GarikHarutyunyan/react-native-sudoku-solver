@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   cell__text: {
     flex: 1,
     textAlign: "center",
-    fontSize: 34,
+    fontSize: 32,
   },
 });
 

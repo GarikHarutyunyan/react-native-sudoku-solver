@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, ViewStyle } from "react-native";
 import { Cell } from "./Cell";
 
 type GridProps = {
@@ -7,7 +7,7 @@ type GridProps = {
   activeCell?: any;
   onCellClick?: any;
   cellsStyle?: object;
-  style?: StyleSheet;
+  style?: StyleSheet<ViewStyle>;
 };
 
 class Grid extends React.Component<GridProps> {
@@ -25,7 +25,7 @@ class Grid extends React.Component<GridProps> {
     const { matrix, activeCell, cellsStyle, style } = this.props;
 
     return (
-      <View style={{ ...styles.grid, ...style }}>
+      <View style={[styles.grid, style]}>
         {matrix.map((row, y) => {
           return (
             <View key={y + ""} style={styles.grid__row}>
@@ -57,7 +57,6 @@ const styles = StyleSheet.create({
   grid: {
     flexGrow: 1,
     flexShrink: 1,
-    marginVertical: 5,
   },
   grid__row: {
     flexShrink: 1,

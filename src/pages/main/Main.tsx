@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { Grid } from "./components/Grid";
+import { Back, Button, Done, Grid, Refresh, Remove } from "../components";
 import { Solver } from "./Solver";
 
 const BACKGROUND_COLOR = "#3b57b3";
@@ -41,19 +41,18 @@ class Main extends React.Component {
     this.changeNum(y, x, 0);
   };
 
-  onNumChange = (newX: number, newY: number) => {
+  onNumChange = (newValue: number) => {
     const { activeCell } = this.state;
     const { x, y } = activeCell;
-    const newNum = 3 * newX + newY + 1;
 
-    this.changeNum(y, x, newNum);
+    this.changeNum(y, x, newValue);
   };
 
-  changeNum = (y: number, x: number, num: number) => {
+  changeNum = (y: number, x: number, value: number) => {
     const { objMatrix } = this.state;
     let newMatrix = objMatrix;
 
-    newMatrix[y][x].value = num;
+    newMatrix[y][x].value = value;
     newMatrix[y][x].color = TEXT_PRIMARY_COLOR;
     this.setState({
       objMatrix: newMatrix,
@@ -88,33 +87,20 @@ class Main extends React.Component {
       ],
     ];
 
-    const controlButtons = [
-      [
-        {
-          value: "Clean Cell",
-          color: TEXT_PRIMARY_COLOR,
-          onClick: this.cleanCell,
-        },
-      ],
-      [
-        {
-          value: "Clear All",
-          color: TEXT_PRIMARY_COLOR,
-          onClick: this.clearAllCells,
-        },
-      ],
-      [
-        {
-          value: "Solve",
-          color: TEXT_PRIMARY_COLOR,
-          onClick: this.solveProblem,
-        },
-      ],
-    ];
-
     return (
       <View style={styles.main}>
-        <View style={styles.flexRow1}>
+        <View style={styles.topBar}>
+          <Button icon={<Back width={40} height={40} />} />
+          <Button
+            icon={<Refresh width={40} height={40} />}
+            onPress={this.clearAllCells}
+          />
+          <Button
+            icon={<Done width={40} height={40} />}
+            onPress={this.solveProblem}
+          />
+        </View>
+        <View style={styles.board}>
           <Grid
             matrix={objMatrix}
             activeCell={activeCell}
@@ -122,9 +108,47 @@ class Main extends React.Component {
             style={styles.grid}
           />
         </View>
-        <View style={styles.flexRow2}>
-          <Grid matrix={numBoard} onCellClick={this.onNumChange} />
-          <Grid matrix={controlButtons} onCellClick={this.onNumChange} />
+        <View style={styles.numBoard}>
+          <View style={styles.numBoardLine}>
+            {Array(5)
+              .fill(1)
+              .map((_val, index) => {
+                const number = index + 1;
+                const onPress = () => this.onNumChange(number);
+
+                return (
+                  <Button
+                    key={number}
+                    text={number.toString()}
+                    onPress={onPress}
+                  />
+                );
+              })}
+          </View>
+          <View style={styles.numBoardLine}>
+            {Array(5)
+              .fill(1)
+              .map((_val, index) => {
+                const number = index + 6;
+                const outOfScope = number >= 10;
+                const buttonText = !!outOfScope ? "" : number.toString();
+                const buttonIcon = !!outOfScope ? (
+                  <Remove width={40} height={40} />
+                ) : undefined;
+                const onPress = !outOfScope
+                  ? () => this.onNumChange(number)
+                  : this.cleanCell;
+
+                return (
+                  <Button
+                    key={number}
+                    icon={buttonIcon}
+                    text={buttonText}
+                    onPress={onPress}
+                  />
+                );
+              })}
+          </View>
         </View>
       </View>
     );
@@ -137,14 +161,26 @@ const styles = StyleSheet.create({
     alignSelf: "stretch",
     backgroundColor: BACKGROUND_COLOR,
     alignItems: "center",
-    flexWrap: "wrap",
   },
-  flexRow1: {
+  topBar: {
     flexDirection: "row",
-    marginTop: 20,
+    margin: 25,
+    justifyContent: "space-between",
+    alignSelf: "stretch",
   },
-  flexRow2: {
+  board: {
     flexDirection: "row",
+  },
+  numBoard: {
+    flexDirection: "column",
+    marginVertical: 15,
+    marginHorizontal: 25,
+    alignSelf: "stretch",
+  },
+  numBoardLine: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 10,
   },
   grid: {
     marginHorizontal: 25,
