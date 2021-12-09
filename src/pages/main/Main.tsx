@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { BackHandler, StyleSheet, View } from "react-native";
 import { Back, Button, Done, Grid, Refresh, Remove } from "../components";
 import { Solver } from "./Solver";
 
@@ -22,6 +22,10 @@ class Main extends React.Component {
     this.setState({
       activeCell: { x: x, y: y },
     });
+  };
+
+  onExit = () => {
+    BackHandler.exitApp();
   };
 
   clearAllCells = () => {
@@ -90,7 +94,10 @@ class Main extends React.Component {
     return (
       <View style={styles.main}>
         <View style={styles.topBar}>
-          <Button icon={<Back width={40} height={40} />} />
+          <Button
+            icon={<Back width={40} height={40} />}
+            onPress={this.onExit}
+          />
           <Button
             icon={<Refresh width={40} height={40} />}
             onPress={this.clearAllCells}
