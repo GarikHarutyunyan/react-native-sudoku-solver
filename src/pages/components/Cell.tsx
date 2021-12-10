@@ -13,7 +13,7 @@ type CellProps = {
 
 class Cell extends React.Component<CellProps> {
   static defaultProps = {
-    color: "black",
+    color: Colors.TEXT_PRIMARY,
   };
 
   shouldComponentUpdate(nextProps: any) {
@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     flexShrink: 1,
     borderWidth: 0.3,
+    borderColor: Colors.TEXT_PRIMARY,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
