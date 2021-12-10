@@ -1,18 +1,16 @@
 import React from "react";
 import { BackHandler, StyleSheet, View } from "react-native";
+import { Colors } from "../../style";
 import { Back, Button, Done, Grid, Refresh, Remove } from "../components";
 import { Solver } from "./Solver";
 
-const BACKGROUND_COLOR = "#3b57b3";
-const TEXT_PRIMARY_COLOR = "#2e313a";
-const TEXT_SECONDARY_COLOR = "#373d4c";
 class Main extends React.Component {
   numMatrix = Array(9).fill(Array(9).fill(0));
 
   state = {
     objMatrix: this.numMatrix.map((row) => {
       return row.map((val: any) => {
-        return { value: val, color: TEXT_PRIMARY_COLOR };
+        return { value: val, color: Colors.TEXT_PRIMARY };
       });
     }),
     activeCell: { x: 0, y: 0 },
@@ -57,7 +55,7 @@ class Main extends React.Component {
     let newMatrix = objMatrix;
 
     newMatrix[y][x].value = value;
-    newMatrix[y][x].color = TEXT_PRIMARY_COLOR;
+    newMatrix[y][x].color = Colors.TEXT_PRIMARY;
     this.setState({
       objMatrix: newMatrix,
     });
@@ -75,19 +73,19 @@ class Main extends React.Component {
     const { objMatrix, activeCell } = this.state;
     const numBoard = [
       [
-        { value: 1, color: TEXT_PRIMARY_COLOR },
-        { value: 2, color: TEXT_PRIMARY_COLOR },
-        { value: 3, color: TEXT_PRIMARY_COLOR },
+        { value: 1, color: Colors.TEXT_PRIMARY },
+        { value: 2, color: Colors.TEXT_PRIMARY },
+        { value: 3, color: Colors.TEXT_PRIMARY },
       ],
       [
-        { value: 4, color: TEXT_PRIMARY_COLOR },
-        { value: 5, color: TEXT_PRIMARY_COLOR },
-        { value: 6, color: TEXT_PRIMARY_COLOR },
+        { value: 4, color: Colors.TEXT_PRIMARY },
+        { value: 5, color: Colors.TEXT_PRIMARY },
+        { value: 6, color: Colors.TEXT_PRIMARY },
       ],
       [
-        { value: 7, color: TEXT_PRIMARY_COLOR },
-        { value: 8, color: TEXT_PRIMARY_COLOR },
-        { value: 9, color: TEXT_PRIMARY_COLOR },
+        { value: 7, color: Colors.TEXT_PRIMARY },
+        { value: 8, color: Colors.TEXT_PRIMARY },
+        { value: 9, color: Colors.TEXT_PRIMARY },
       ],
     ];
 
@@ -166,7 +164,7 @@ const styles = StyleSheet.create({
   main: {
     flex: 1,
     alignSelf: "stretch",
-    backgroundColor: BACKGROUND_COLOR,
+    backgroundColor: Colors.APP_PRIMARY,
     alignItems: "center",
   },
   topBar: {

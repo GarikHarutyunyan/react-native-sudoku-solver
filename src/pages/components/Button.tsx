@@ -7,6 +7,7 @@ import {
   View,
   ViewStyle,
 } from "react-native";
+import { Colors } from "../../style";
 
 interface IButtonProps {
   text?: string;
@@ -42,19 +43,19 @@ const styles = StyleSheet.create({
   button: {
     aspectRatio: 1,
     width: "18%",
-    borderWidth: 0.3,
-    borderColor: "black",
+    borderWidth: 1,
     borderRadius: 5,
+    borderColor: Colors.TEXT_PRIMARY,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     // elevation: 20,
-    shadowColor: "black",
+    // shadowColor: "black",
   },
   text: {
     fontWeight: "bold",
     fontSize: 42,
-    color: "#2e313a",
+    color: Colors.TEXT_PRIMARY,
   },
 });
 

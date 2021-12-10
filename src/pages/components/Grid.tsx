@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
+import { Colors } from "../../style";
 import { Cell } from "./Cell";
 
 type GridProps = {
@@ -57,18 +58,20 @@ const styles = StyleSheet.create({
   grid: {
     flexGrow: 1,
     flexShrink: 1,
+    borderWidth: 2,
+    borderColor: Colors.TEXT_PRIMARY,
   },
   grid__row: {
     flexShrink: 1,
     flexDirection: "row",
   },
   cell_boldTopBorder: {
-    borderColor: "black",
     borderTopWidth: 2,
+    borderColor: Colors.TEXT_PRIMARY,
   },
   cell_boldLeftBorder: {
-    borderColor: "black",
     borderLeftWidth: 2,
+    borderColor: Colors.TEXT_PRIMARY,
   },
 });
 
