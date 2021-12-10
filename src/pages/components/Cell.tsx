@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native";
+import { Colors } from "../../style";
 
 type CellProps = {
   value: number;
@@ -23,7 +24,7 @@ class Cell extends React.Component<CellProps> {
   }
 
   render() {
-    const { value, isActive, onClick, color, style, className } = this.props;
+    const { value, isActive, onClick, color, style } = this.props;
     const cellStyle = [
       styles.cell,
       isActive && styles.cell_active,
@@ -42,20 +43,18 @@ class Cell extends React.Component<CellProps> {
   }
 }
 
-const ACTIVE_CELL_COLOR = "#4c70c1";
 const styles = StyleSheet.create({
   cell: {
     aspectRatio: 1,
     flexGrow: 1,
     flexShrink: 1,
     borderWidth: 0.3,
-    borderColor: "black",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
   },
   cell_active: {
-    backgroundColor: ACTIVE_CELL_COLOR,
+    backgroundColor: Colors.APP_SECONDARY,
   },
   cell_forText: {
     aspectRatio: 2.5,
@@ -63,7 +62,7 @@ const styles = StyleSheet.create({
   cell__text: {
     flex: 1,
     textAlign: "center",
-    fontSize: 34,
+    fontSize: 32,
   },
 });
 

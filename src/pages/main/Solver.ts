@@ -1,4 +1,4 @@
-const TEXT_SECONDARY_COLOR = "#373d4c";
+import { Colors } from "../../style";
 
 export class Solver {
   matrix: any = null;
@@ -48,7 +48,7 @@ export class Solver {
           for (var num = 1; num < 10; num++) {
             if (this.possible(y, x, num)) {
               this.matrix[y][x].value = num;
-              this.matrix[y][x].color = TEXT_SECONDARY_COLOR;
+              this.matrix[y][x].color = Colors.TEXT_SECONDARY_COLOR;
               if (!this.solve()) {
                 this.matrix[y][x].value = 0;
               } else {
