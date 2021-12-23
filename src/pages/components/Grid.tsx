@@ -56,13 +56,11 @@ class Grid extends React.Component<GridProps> {
 
 const styles = StyleSheet.create({
   grid: {
-    flexGrow: 1,
-    flexShrink: 1,
+    aspectRatio: 1,
     borderWidth: 2,
     borderColor: Colors.TEXT_PRIMARY,
   },
   grid__row: {
-    flexShrink: 1,
     flexDirection: "row",
   },
   cell_boldTopBorder: {

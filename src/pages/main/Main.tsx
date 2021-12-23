@@ -169,15 +169,19 @@ const styles = StyleSheet.create({
   },
   topBar: {
     flexDirection: "row",
+    flexGrow: 1,
     margin: 25,
     justifyContent: "space-between",
     alignSelf: "stretch",
   },
   board: {
     flexDirection: "row",
+    flexGrow: 4,
+    alignItems: "center",
   },
   numBoard: {
     flexDirection: "column",
+    flexGrow: 2,
     marginVertical: 15,
     marginHorizontal: 25,
     alignSelf: "stretch",
