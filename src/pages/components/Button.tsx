@@ -45,10 +45,21 @@ const styles = StyleSheet.create({
     width: "18%",
     borderWidth: 1,
     borderRadius: 5,
-    borderColor: Colors.TEXT_PRIMARY,
+    borderColor: Colors.APP_PRIMARY,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: Colors.APP_PRIMARY,
+
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 12,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: 16.0,
+
+    elevation: 14,
     // elevation: 20,
     // shadowColor: "black",
   },
