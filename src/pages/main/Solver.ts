@@ -41,11 +41,35 @@ export class Solver {
     return [...row1, ...row2, ...row3];
   };
 
+  private validate = () => {
+    let x, y;
+
+    for (y = 0; y < 9; y++) {
+      for (x = 0; x < 9; x++) {
+        if (this.matrix[y][x].value !== 0) {
+          const num = this.matrix[y][x].value;
+
+          this.matrix[y][x].value = 0;
+          if (!this.possible(y, x, num)) {
+            this.matrix[y][x].value = num;
+
+            return false;
+          } else {
+            this.matrix[y][x].value = num;
+          }
+        }
+      }
+    }
+    return true;
+  };
+
   public solve = () => {
-    for (var y = 0; y < 9; y++) {
-      for (var x = 0; x < 9; x++) {
+    let x, y, num;
+
+    for (y = 0; y < 9; y++) {
+      for (x = 0; x < 9; x++) {
         if (this.matrix[y][x].value === 0) {
-          for (var num = 1; num < 10; num++) {
+          for (num = 1; num < 10; num++) {
             if (this.possible(y, x, num)) {
               this.matrix[y][x].value = num;
               this.matrix[y][x].color = Colors.TEXT_SECONDARY_COLOR;
@@ -64,7 +88,11 @@ export class Solver {
   };
 
   public run = () => {
-    this.solve();
+    if (this.validate()) {
+      this.solve();
+    } else {
+      alert("Oops!!! Not a valid data!");
+    }
 
     return this.matrix;
   };
