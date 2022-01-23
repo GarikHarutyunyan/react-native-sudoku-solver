@@ -60,8 +60,6 @@ const styles = StyleSheet.create({
     shadowRadius: 16.0,
 
     elevation: 14,
-    // elevation: 20,
-    // shadowColor: "black",
   },
   text: {
     fontWeight: "bold",

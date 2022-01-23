@@ -1,10 +1,17 @@
 import React from "react";
 import { BackHandler, StyleSheet, View } from "react-native";
+import Spinner from "react-native-loading-spinner-overlay";
 import { Colors } from "../../style";
 import { Back, Button, Done, Grid, Refresh, Remove } from "../components";
 import { Solver } from "./Solver";
 
-class Main extends React.Component {
+interface IMainProps {}
+interface IMainState {
+  objMatrix: [][];
+  activeCell: object;
+  isLoading: boolean;
+}
+class Main extends React.Component<IMainProps, IMainState> {
   numMatrix = Array(9).fill(Array(9).fill(0));
 
   state = {
@@ -14,6 +21,7 @@ class Main extends React.Component {
       });
     }),
     activeCell: { x: 0, y: 0 },
+    isLoading: false,
   };
 
   onActiveCellChange = (y: number, x: number) => {
@@ -27,13 +35,13 @@ class Main extends React.Component {
   };
 
   clearAllCells = () => {
-    Array(9)
-      .fill(Array(9).fill(0))
-      .forEach((row: any, y: number) => {
-        return row.forEach((num: any, x: number) => {
-          return this.changeNum(y, x, num);
+    this.setState({
+      objMatrix: this.numMatrix.map((row) => {
+        return row.map((val: any) => {
+          return { value: val, color: Colors.TEXT_PRIMARY };
         });
-      });
+      }),
+    });
   };
 
   cleanCell = () => {
@@ -62,35 +70,24 @@ class Main extends React.Component {
   };
 
   solveProblem = () => {
-    const solver = new Solver(this.state.objMatrix);
-    const newObjMatrix = solver.run();
-    this.setState({
-      objMatrix: newObjMatrix,
-    });
+    this.setState({ isLoading: true });
+    setTimeout(() => {
+      const solver = new Solver(this.state.objMatrix);
+      const newObjMatrix = solver.run();
+
+      this.setState({
+        objMatrix: newObjMatrix,
+        isLoading: false,
+      });
+    }, 0);
   };
 
   render() {
-    const { objMatrix, activeCell } = this.state;
-    const numBoard = [
-      [
-        { value: 1, color: Colors.TEXT_PRIMARY },
-        { value: 2, color: Colors.TEXT_PRIMARY },
-        { value: 3, color: Colors.TEXT_PRIMARY },
-      ],
-      [
-        { value: 4, color: Colors.TEXT_PRIMARY },
-        { value: 5, color: Colors.TEXT_PRIMARY },
-        { value: 6, color: Colors.TEXT_PRIMARY },
-      ],
-      [
-        { value: 7, color: Colors.TEXT_PRIMARY },
-        { value: 8, color: Colors.TEXT_PRIMARY },
-        { value: 9, color: Colors.TEXT_PRIMARY },
-      ],
-    ];
+    const { objMatrix, activeCell, isLoading } = this.state;
 
     return (
       <View style={styles.main}>
+        <Spinner visible={isLoading} color={Colors.APP_PRIMARY} />
         <View style={styles.topBar}>
           <Button
             icon={<Back width={40} height={40} />}
